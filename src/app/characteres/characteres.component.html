@@ -1,5 +1,20 @@
+  
 <div fxFlex fxLayout="column">
-    <div fxLayout= "row wrap">
+    <div class="container-fluid mt-5">
+        <div class="row">
+          <div class="col-lg-6">
+          </div>
+          <div class="col-lg-3">
+            <input class="form-control mr-sm-2" type="text"
+            required name='characterName' id='characterName'
+            placeholder="Procurar" aria-label="Search" (keyup)="findCharacter($event)">
+          </div>
+          <div class="col-lg-3">
+          </div>
+        </div>
+      </div>
+
+    <div fxLayout= "row wrap" *ngIf="!showSearchResult">
         <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
         *ngFor="let character of allCharacters | async" style="padding: 5px;">
             <app-character [character]="character">
@@ -7,4 +22,20 @@
             </app-character>
         </div>
     </div>
+
+    <div fxLayout= "row wrap" *ngIf="showSearchResult">
+      <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+      *ngFor="let characters of searchedCharacter" style="padding: 5px;">
+        <mat-card>
+          <img mat-card-image src="{{characters.thumbnail.path}}.{{characters.thumbnail.extension}}" 
+          alt="{{characters.name}}">
+          <mat-card-title>{{characters.name}}</mat-card-title>
+          <mat-card-footer>
+              <a href="{{characters.urls[0].url}}" target="_blank" fxFlex mat-flat-button color="primary">
+                  Detalhes
+              </a>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+  </div>
 </div>
