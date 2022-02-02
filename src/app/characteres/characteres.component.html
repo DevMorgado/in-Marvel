@@ -1,30 +1,31 @@
-  
+
 <div fxFlex fxLayout="column">
-    <div class="container-fluid mt-5">
-        <div class="row">
-          <div class="col-lg-6">
-          </div>
-          <div class="col-lg-3">
-            <input class="form-control mr-sm-2" type="text"
-            required name='characterName' id='characterName'
-            placeholder="Procurar" aria-label="Search" (keyup)="findCharacter($event)">
-          </div>
-          <div class="col-lg-3">
-          </div>
-        </div>
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" 
+          placeholder="Procurar..." aria-label="Search" (keyup)="findCharacter($event)">
+        </form>
       </div>
-
-    <div fxLayout= "row wrap" *ngIf="!showSearchResult">
-        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
-        *ngFor="let character of allCharacters | async" style="padding: 5px;">
-            <app-character [character]="character"></app-character>
-        </div>
     </div>
+  </header>
 
+  <div class="container">
+    <div fxLayout= "row wrap" *ngIf="!showSearchResult">
+      <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+        *ngFor="let character of allCharacters | async" style="padding: 5px;">
+          <app-character [character]="character"></app-character>
+      </div>
+    </div>
+  </div>
+    
+  <div class="container">
     <div fxLayout= "row wrap" *ngIf="showSearchResult">
       <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
-      *ngFor="let characters of searchedCharacter" style="padding: 5px;">
-        <app-character [character]="characters"></app-character>  
+        *ngFor="let characters of searchedCharacter" style="padding: 5px;">
+          <app-character [character]="characters"></app-character>  
       </div>
-  </div>
+      </div>
+    </div>
 </div>
