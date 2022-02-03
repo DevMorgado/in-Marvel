@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-title>
+        {{character.name}}
+    </mat-card-title>
+    <img mat-card-image src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" 
+    alt="{{character.name}}">
+    <mat-label>Descrição: {{character.description}}</mat-label>
+    <mat-card-footer>
+        <a (click)="showCharacterSeries()" fxFlex mat-flat-button color="primary">
+            Series
+        </a>
+    </mat-card-footer>
+</mat-card>

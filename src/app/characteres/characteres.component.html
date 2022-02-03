@@ -3,6 +3,9 @@
   <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-secondary">Início</a></li>
+        </ul>
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" 
           placeholder="Procurar..." aria-label="Search" (keyup)="findCharacter($event)">
@@ -12,7 +15,7 @@
   </header>
 
   <div class="container">
-    <div fxLayout= "row wrap" *ngIf="!showSearchResult">
+    <div fxLayout= "row wrap" *ngIf="showAllCharacters">
       <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
         *ngFor="let character of allCharacters | async" style="padding: 5px;">
           <app-character [character]="character"></app-character>
@@ -28,4 +31,22 @@
       </div>
       </div>
     </div>
+
+    <div class="container">
+      <div fxLayout= "row wrap" *ngIf="showCharacterDetails">
+        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+          *ngFor="let character of characterDetails" style="padding: 5px;">
+            <app-character-details [character]="character"></app-character-details>  
+        </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div fxLayout= "row wrap" *ngIf="showCharacterSeries">
+          <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+            *ngFor="let character of characterSeries" style="padding: 5px;">
+              <app-character-series [character]="character"></app-character-series>  
+          </div>
+          </div>
+        </div>
 </div>

@@ -23,9 +23,18 @@ export class CharactersApiService {
     );
   }
 
-  getCharacterByName(characterName:string):Observable<any>
-  {
+  getCharacterByName(characterName:string):Observable<any>{
     const characterByName = 'https://gateway.marvel.com:443/v1/public/characters?limit=12&nameStartsWith='+characterName+'&ts='+this.TIMESTAMP+'&apikey='+this.PUBLIC_KEY+'&hash='+this.HASH;
     return this.http.get(characterByName);
+  }
+
+  getCharacterById(characterId:number):Observable<any>{
+    const characterById = 'https://gateway.marvel.com:443/v1/public/characters/'+characterId+'?ts='+this.TIMESTAMP+'&apikey='+this.PUBLIC_KEY+'&hash='+this.HASH;
+    return this.http.get(characterById);
+  }
+
+  getSeriesByCharacter(characterId:number):Observable<any>{
+    const seriesByCharacter = 'https://gateway.marvel.com:443/v1/public/characters/'+characterId+'/series?ts='+this.TIMESTAMP+'&apikey='+this.PUBLIC_KEY+'&hash='+this.HASH;
+    return this.http.get(seriesByCharacter);
   }
 }

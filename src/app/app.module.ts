@@ -17,13 +17,17 @@ import { CharacterComponent } from './characteres/character/character.component'
 import { CharacteresComponent } from './characteres/characteres.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CharacterDetailsComponent } from './characteres/character/character-details/character-details.component';
+import { CharacterSeriesComponent } from './characteres/character/character-series/character-series.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CharacterComponent,
-    CharacteresComponent
+    CharacteresComponent,
+    CharacterDetailsComponent,
+    CharacterSeriesComponent
   ],
   imports: [
     BrowserModule,
